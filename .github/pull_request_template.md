@@ -4,7 +4,7 @@
 
 - [ ] Unit and course checks pass
 - [ ] Docker checks pass (or explain why unavailable locally)
-- [ ] English default and Tamil scope preserved
+- [ ] English-only day-by-day curriculum preserved
 - [ ] Commands and local links verified
 - [ ] No secrets/state/private logs
 

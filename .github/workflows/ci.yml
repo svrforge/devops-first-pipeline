@@ -24,6 +24,9 @@ jobs:
           python -m compileall -q app.py learn.py tests scripts labs/observability
           python -m unittest discover -s tests -v
           python scripts/validate_course.py
+          node --test tests/academy.test.cjs
+          node --check academy/app.js
+          node --check academy/core.js
       - name: Check shell syntax
         run: bash -n scripts/*.sh
   container:

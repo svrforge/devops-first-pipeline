@@ -7,7 +7,6 @@
 
 A small Python HTTP service you can take from your laptop to a tested Docker image. No Python packages, cloud account, paid tools or deployment credentials required. Built for learners by **SVR Forge · Vignesh Raja Sundararajan**.
 
-> Tamil learners: app code theriyalanaalum start pannalaam. First local-la run pannunga; next tests, Docker, CI order-la learn pannunga. Green tick mattum goal illa — failure reason purinju fix panradhu thaan real learning.
 
 ## What you will learn
 

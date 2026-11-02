@@ -14,7 +14,7 @@ def catalog():
 
 
 def progress_file():
-    return Path(os.environ.get('DEVOPS_PROGRESS_FILE', str(ROOT / '.learning-progress.json')))
+    return Path(os.environ.get('DEVOPS_PROGRESS_FILE', str(ROOT / '.day-progress.json')))
 
 
 def read_progress():
@@ -55,7 +55,7 @@ def main(argv=None):
         parser.exit(2, f'Cannot read progress: {exc}\n')
     if args.command in (None, 'list', 'status', 'next'):
         print('\nSVR FORGE / DEVOPS ZERO TO HERO\nLearn. Build. Verify. Recover.\n')
-        print(f'Progress: {len(done)}/{len(data["lessons"])} modules (self-reported, not a certification)\n')
+        print(f'Progress: {len(done)}/{len(data["lessons"])} days (self-reported, not a certification)\n')
         for lesson in data['lessons']:
             if args.command == 'next' and lesson['id'] in done:
                 continue
@@ -74,9 +74,11 @@ def main(argv=None):
         return 0
     lesson = next(x for x in data['lessons'] if x['id'] == args.id)
     if args.command == 'lesson':
-        print(f'\n{lesson["id"]} / {lesson["title"][args.lang]}\n')
+        print(f'\nDay {int(lesson["id"])} / {lesson["title"][args.lang]}\n')
         for heading, value in [('UNDERSTAND', lesson['concept'][args.lang]), ('TRY (run yourself)', lesson['commands']), ('VERIFY', lesson['expected'][args.lang]), ('BREAK / RECOVER', lesson['challenge'][args.lang])]:
             print(f'{heading}\n{value}\n')
+        for index, item in enumerate(lesson['steps'], 1):
+            print(f"{index}. {item['title']}: {item['text']}\n")
         print(f'Quiz: python learn.py quiz {args.id}')
         return 0
     if args.command == 'quiz':
@@ -95,7 +97,7 @@ def main(argv=None):
         return 0 if correct else 1
     if args.command == 'complete':
         save_progress(done + [args.id])
-        print(f'Module {args.id} recorded locally. Keep your lab evidence; this is self-reported progress.')
+        print(f'Day {int(args.id)} recorded locally. Keep your lab evidence; this is self-reported progress.')
         return 0
     return 2
 

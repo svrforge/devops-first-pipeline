@@ -8,3 +8,5 @@ __pycache__/
 *.tfstate
 *.tfstate.*
 *.tfplan
+.day-progress.json
+.day-progress.tmp

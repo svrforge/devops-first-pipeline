@@ -1,0 +1,47 @@
+name: Publish classroom
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: classroom-pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Verify the merged source
+        run: |
+          python -m unittest discover -s tests -v
+          python scripts/validate_course.py
+          node --test tests/academy.test.cjs
+          node --check academy/app.js
+          node --check academy/core.js
+          docker compose config -q
+          docker build -t devops-first-pipeline:pages .
+          bash scripts/container-check.sh devops-first-pipeline:pages
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: academy
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Deploy verified classroom
+        id: deployment
+        uses: actions/deploy-pages@v4
