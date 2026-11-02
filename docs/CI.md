@@ -4,7 +4,7 @@ CI means **Continuous Integration**: automatically check proposed code changes. 
 
 ## What must pass
 
-1. Compile Python source and run the five real HTTP tests on Python 3.11, 3.12 and 3.13.
+1. Compile Python source and run the real HTTP and learning-companion tests on Python 3.11, 3.12 and 3.13.
 2. Check Bash syntax.
 3. Validate Compose configuration.
 4. Build the Docker image.
@@ -29,6 +29,6 @@ Open Actions → failed run → failed job → failed step. Reproduce that exact
 
 Weekly Dependabot PRs propose action and Docker base-image updates; they do not auto-merge. Review them and confirm CI passes. This is a maintenance aid, not a promise of permanent compatibility.
 
-## Optional merge protection
+## Merge protection
 
-Repository owner: Settings → Rules → Rulesets (or Branches) → protect `main` and require pull requests plus the three Python checks and Docker check after their first run. Availability depends on GitHub plan/repository settings. This repo does not claim protection is enabled. Requiring checks prevents accidental merges of known failing PRs; owners can still change settings. Direct pushes are checked after they arrive.
+Repository owner: Settings → Rules → Rulesets (or Branches) → protect `main` and require pull requests plus the three Python checks and Docker check after their first run. Availability depends on GitHub plan/repository settings. Main protection is configured separately in repository settings; inspect the current settings for its authoritative state. Requiring checks prevents accidental merges of known failing PRs; owners can still change settings. Direct pushes are checked after they arrive.

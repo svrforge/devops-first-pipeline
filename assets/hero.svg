@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="390" viewBox="0 0 1280 390" role="img" aria-label="SVR Forge DevOps Zero to Hero: learn, build, verify, recover">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#080f20"/><stop offset="1" stop-color="#142e42"/></linearGradient><linearGradient id="accent"><stop stop-color="#68efd0"/><stop offset="1" stop-color="#82b9ff"/></linearGradient></defs>
+<rect width="1280" height="390" rx="22" fill="url(#bg)"/>
+<path d="M930 0v390M1010 0v390M1090 0v390M1170 0v390M850 75h430M850 155h430M850 235h430M850 315h430" stroke="#6deacf" opacity=".08"/>
+<rect x="50" y="46" width="5" height="38" fill="#68efd0"/><text x="74" y="72" font-family="Arial,sans-serif" font-size="20" letter-spacing="5" fill="#a2b7cc">SVR FORGE / ENGINEERING ACADEMY</text>
+<text x="50" y="160" font-family="Arial,sans-serif" font-size="62" font-weight="800" fill="white">DEVOPS</text>
+<text x="50" y="236" font-family="Arial,sans-serif" font-size="64" font-weight="800" fill="url(#accent)">ZERO TO HERO</text>
+<text x="53" y="284" font-family="Arial,sans-serif" font-size="21" fill="#b5cadb">Learn the fundamentals. Build the proof. Own the recovery.</text>
+<text x="53" y="341" font-family="Arial,sans-serif" font-size="15" letter-spacing="2" fill="#68efd0">12 MODULES / HANDS-ON LABS / ENGLISH + TAMIL</text>
+<g fill="none" stroke="#68efd0" stroke-width="2"><path d="M1000 97l100 58v116l-100 58-100-58V155z"/><path d="M900 155l100 58 100-58M1000 213v116"/></g>
+<text x="958" y="188" font-family="monospace" font-size="28" fill="white">&gt;_</text><text x="946" y="367" font-family="Arial,sans-serif" font-size="14" fill="#aac0d3">BUILD WITH INTENT.</text></svg>

@@ -1,126 +1,87 @@
-# DevOps First Pipeline
+<p align="center"><img src="assets/hero.svg" alt="SVR Forge DevOps Zero to Hero" width="100%"></p>
 
-[![CI](https://github.com/svrforge/devops-first-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/svrforge/devops-first-pipeline/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<p align="center"><a href="https://github.com/svrforge/devops-first-pipeline/actions/workflows/ci.yml"><img src="https://github.com/svrforge/devops-first-pipeline/actions/workflows/ci.yml/badge.svg" alt="CI"></a> · <strong>English by default</strong> · <a href="docs/ta/README.md">தமிழ்</a> · <a href="LICENSE">MIT</a></p>
 
-**Your first working DevOps project — understand it, run it, break it, fix it.**
+# One path. Real practice. Evidence at every step.
 
-A small Python HTTP service you can take from your laptop to a tested Docker image. No Python packages, cloud account, paid tools or deployment credentials required. Built for learners by **SVR Forge · Vignesh Raja Sundararajan**.
+**Learn DevOps from zero by operating one small service from your laptop to CI, containers and a local Kubernetes cluster.** No cloud bill to begin. No Python packages to install. Every module has an explanation, commands, expected evidence, a failure exercise and a knowledge check.
 
-> Tamil learners: app code theriyalanaalum start pannalaam. First local-la run pannunga; next tests, Docker, CI order-la learn pannunga. Green tick mattum goal illa — failure reason purinju fix panradhu thaan real learning.
+<table><tr><td><strong>01 / UNDERSTAND</strong><br>Short explanations before tools.</td><td><strong>02 / BUILD</strong><br>Run commands and inspect outcomes.</td><td><strong>03 / RECOVER</strong><br>Diagnose a failure and prove the fix.</td></tr></table>
 
-## What you will learn
+## Choose your starting point
 
-| Stage | What you do | Proof you understand it |
-|---|---|---|
-| Git | Clone, branch, commit, open a pull request | Your own change appears in a PR |
-| Linux / HTTP | Run a process, read logs, call endpoints | Explain 200, 404 and ports |
-| Tests | Check real HTTP responses with unittest | Break a response and see a test fail |
-| Docker | Build an image and run a non-root container | Container becomes healthy |
-| CI | Run tests on Python 3.11, 3.12 and 3.13, plus Docker checks | All four jobs pass on your commit |
-| Jenkins (optional) | Run the same checks on your learning agent | Pipeline stages succeed |
-| Kubernetes (optional) | Run two replicas in a local kind cluster | Rollout and health probes succeed |
+| You are here | Start here |
+|---|---|
+| I have never used DevOps tools | **[Start here — setup in small steps](START-HERE.md)** |
+| I want the complete learning path | [12-module English course](docs/en/README.md) |
+| எனக்கு தமிழில் விளக்கம் வேண்டும் | [தமிழ் concept guides](docs/ta/README.md) |
+| I learn by building | [Run the first project](docs/FIRST-PROJECT.md) |
+| I want a daily structure | [30-day practice plan](docs/30-DAY-PLAN.md) |
+| I want to prove my skills | [Three capstones and evidence rubric](capstones/README.md) |
 
-## 1. Start here: run locally
-
-Install Git and Python 3.11 or newer. Docker Desktop is only needed for stage 3. On Windows, use `py` if `python` is unavailable; use Git Bash or WSL for `.sh` scripts.
+## Your offline learning companion
 
 ```bash
 git clone https://github.com/svrforge/devops-first-pipeline.git
 cd devops-first-pipeline
+python learn.py
+python learn.py doctor
+python learn.py lesson 01
+```
+
+```bash
+python learn.py --lang ta lesson 01  # Tamil concept explanation
+python learn.py quiz 01             # Knowledge check, with feedback
+python learn.py complete 01         # Record your own lab completion
+python learn.py next                # Continue from local progress
+```
+
+The companion **displays commands; it never runs them for you**. Progress stays in an ignored local JSON file. It is self-reported, not a certificate. English is the default throughout. Tamil covers module concepts and navigation; technical commands, detailed exercises and quizzes remain English so commands are consistent. [Translation scope and contribution guide](docs/LANGUAGES.md).
+
+## The curriculum
+
+| Level | Modules | You will demonstrate |
+|---|---|---|
+| **Foundation** | [01 Mindset](docs/en/01.md) · [02 Linux](docs/en/02.md) · [03 Git](docs/en/03.md) · [04 Networking](docs/en/04.md) | Understand a process, inspect a request, propose a change |
+| **Build & deliver** | [05 Python/tests](docs/en/05.md) · [06 Docker](docs/en/06.md) · [07 CI](docs/en/07.md) · [08 Jenkins](docs/en/08.md) | Test behavior, build an image, verify a pipeline |
+| **Operate** | [09 Kubernetes](docs/en/09.md) · [10 Terraform](docs/en/10.md) · [11 Incidents](docs/en/11.md) · [12 Security/capstone](docs/en/12.md) | Diagnose, recover, plan infrastructure, explain risk |
+
+## What is included
+
+- **Working project:** Python HTTP service, real HTTP tests, non-root Docker image, hardened local Compose configuration.
+- **Learning experience:** 12 English lessons + 12 Tamil concept companions, offline navigator, quizzes, local progress and setup checks.
+- **Hands-on extensions:** Jenkins pipeline, named-context kind deployment, provider-free Terraform state lab, HTTP observation script, incident template.
+- **Portfolio evidence:** three capstone rubrics, daily practice plan, contribution and PR templates.
+- **Quality gates:** Python 3.11/3.12/3.13 tests, course/translation/link checks, Docker build and live-container smoke test. Weekly dependency update PRs.
+
+## How a change reaches main
+
+```mermaid
+flowchart TD
+    A[Feature branch] --> B[Pull request]
+    B --> C[Python and course checks]
+    B --> D[Docker build and smoke test]
+    C --> E{All checks pass?}
+    D --> E
+    E -->|Yes| F[Merge to main]
+    E -->|No| G[Read logs and fix]
+    G --> A
+```
+
+CI reports failures honestly; a green badge is evidence of the configured checks only. Jenkins, kind and Terraform walkthroughs are additional labs, not claims of deployed production infrastructure. See [CI and maintenance](docs/CI.md).
+
+## Build your first proof today
+
+```bash
 python -m unittest discover -s tests -v
+python scripts/validate_course.py
 python app.py
 ```
 
-Open <http://localhost:8000/> and <http://localhost:8000/health>. Stop with **Ctrl+C**.
+Open <http://localhost:8000/health>. Expected: `{"status": "ok"}`. Stop with Ctrl+C. Then move to Docker when ready — you do not need every tool installed on day one.
 
-Expected home response (JSON key order is irrelevant):
+## Learn safely, contribute clearly
 
-```json
-{"message": "Hello, DevOps learner!", "version": "1.0.0"}
-```
+This is an educational service using Python's built-in HTTP server, not a production web stack. The default path uses local resources; the [OCI guide](docs/CLOUD.md) is a planning exercise. Never use work clusters or commit secrets/state. [Troubleshooting](docs/TROUBLESHOOTING.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md).
 
-In a second terminal, while the app runs:
-
-```bash
-bash scripts/smoke.sh
-```
-
-Configuration: `PORT` defaults to `8000`; `APP_VERSION` defaults to `1.0.0`. Example for Bash: `APP_VERSION=2.0.0 PORT=8001 python app.py`. In PowerShell: `$env:APP_VERSION="2.0.0"; $env:PORT="8001"; python app.py`. No secrets belong in these variables.
-
-## 2. Make a change and see CI work
-
-If you are a visitor, **fork this repository first** and clone your own fork to get push permission.
-
-```bash
-git switch -c learning/my-first-change
-# Edit a message and its matching test together.
-python -m unittest discover -s tests -v
-git add app.py tests/test_app.py
-git commit -m "Update greeting and its HTTP test"
-git push -u origin learning/my-first-change
-```
-
-Open a pull request and inspect its **Checks** tab. `CI` runs on every push and pull request, and can also be started manually from **Actions → CI → Run workflow**. It does not deploy, publish images or need secrets.
-
-**A green build is earned.** Failed tests and container checks fail the workflow; nothing masks failures. External runner outages or broken future changes can still turn it red. See [the CI guide](docs/CI.md) for maintenance and recovery.
-
-## 3. Build and verify Docker
-
-Start Docker Desktop (Linux containers), or a Docker Engine daemon on Linux.
-
-```bash
-docker build -t devops-first-pipeline:local .
-bash scripts/container-check.sh devops-first-pipeline:local
-docker compose up --build -d
-docker compose ps
-docker compose logs app
-```
-
-Open <http://localhost:8000/health>. Compose binds to loopback so this exercise is not exposed on your LAN. Stop the app when finished:
-
-```bash
-docker compose down
-```
-
-The verification script starts an isolated container, waits for health, checks the response and UID, then removes its own container. Docker runs the app as UID `10001`, with a read-only filesystem and dropped capabilities.
-
-`PORT` is configurable for the local Python process. The Docker health check and provided manifests intentionally use port `8000`; keep that port inside the container and change the host mapping if needed.
-
-## 4. Optional extensions
-
-- [Jenkins walkthrough](docs/JENKINS.md): use the included `Jenkinsfile`.
-- [Kubernetes walkthrough](docs/KUBERNETES.md): local kind cluster, no cloud charges.
-- [Seven practical exercises](docs/EXERCISES.md): learn by changing and troubleshooting.
-- [Troubleshooting and glossary](docs/TROUBLESHOOTING.md).
-
-## Repository map
-
-```text
-app.py                       HTTP service
- tests/test_app.py           Real HTTP tests (5 cases)
-Dockerfile                   Non-root learning image
-compose.yaml                 Local container run
-scripts/smoke.sh             HTTP endpoint verification
-scripts/container-check.sh   Container health + UID verification
-.github/workflows/ci.yml     Automated tests and container build
-.github/dependabot.yml       Weekly action/base-image update PRs
-Jenkinsfile                  Optional Jenkins pipeline
-k8s/app.yaml                 Local Kubernetes deployment + service
-docs/                        Guided labs and explanations
-```
-
-## Scope and security
-
-This uses Python's `http.server` **for education only**. It is not a production API server. There is no authentication, TLS, database, public deployment, vulnerability scan or automatic release in this project. Do not put real user data or secrets into it. Docker tags and action major versions receive upstream updates; review Dependabot PRs and their CI before merging. For production, use an appropriate web server, immutable image digests, full action SHA pins, monitoring and deployment controls.
-
-## Contributing
-
-Keep changes beginner-friendly, add tests for changed behavior, and run the checks documented above. Explain **why** a change is useful. Do not submit credentials or unrelated generated files. MIT licensed; you may learn from and adapt this project with the included license notice.
-
-## Official references
-
-- [GitHub Actions: Python builds](https://docs.github.com/en/actions/tutorials/build-and-test-code/python)
-- [Dockerfile instructions](https://docs.docker.com/reference/dockerfile/)
-- [Jenkins Pipeline](https://www.jenkins.io/doc/book/pipeline/)
-- [kind quick start](https://kind.sigs.k8s.io/docs/user/quick-start/)
+Built and maintained under **SVR Forge · Vignesh Raja Sundararajan**. The goal is practical understanding, not a promise of mastery in a fixed number of days.
