@@ -25,4 +25,3 @@ Add `/ready` returning `{"ready": true}`. Write a real HTTP test, preserve the u
 - Why does a green run prove only the checks that actually ran?
 - Which changes would you need before exposing this service to real users?
 
-Tamil memory shorts: Git = change history; image = packaged app; container = running instance; CI = automatic verification; readiness = traffic-ku ready; liveness = process healthy-aa.

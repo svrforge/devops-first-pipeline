@@ -1,53 +1,47 @@
-# Start here — one small win at a time
+# Start here — your Day 1 setup
 
-[Course home](README.md) · [English](docs/en/README.md) · [தமிழ்](docs/ta/README.md)
+[Open the animated classroom](https://svrforge.github.io/devops-first-pipeline/) · [All 30 text lessons](docs/en/README.md)
 
-## What you need today
+## Learn in your browser
 
-- A computer, a terminal, Git and Python 3.11 or newer.
-- Windows: PowerShell works for Python and Git; use `py` instead of `python` if needed. Git Bash or WSL is needed only for Bash exercises.
-- macOS/Linux: use `python3` if your system does not provide `python`.
-- Docker, Jenkins, Kubernetes and Terraform can wait until their modules.
+Open the classroom and choose Day 1. Click **Play walkthrough**, or use the four step buttons at your own pace. Read the explanation and familiar example. The animation illustrates a concept; it does not execute shell commands.
 
-Use official downloads: [Python](https://www.python.org/downloads/), [Git](https://git-scm.com/downloads/), [Docker](https://docs.docker.com/get-started/get-docker/). Install tools yourself; this course does not run installers.
+Move to **Try it yourself** for the real commands, success evidence and recovery drill. Use **Checkpoint** to test understanding. Confirm practical evidence and pass the checkpoint before recording completion. Progress and notes are saved in this browser; Export progress downloads a backup, not an account sync. There is no import feature in this edition.
 
-## 1. Get the course
+## Prepare for hands-on work
+
+Install [Git](https://git-scm.com/downloads/) and [Python 3.11+](https://www.python.org/downloads/). Start with only these tools. Docker, Jenkins, kind and Terraform come later.
 
 ```bash
 git clone https://github.com/svrforge/devops-first-pipeline.git
 cd devops-first-pipeline
 python learn.py doctor
+python -m unittest discover -s tests -v
 ```
 
-Doctor checks tool availability on PATH only. Missing optional tools do not prevent the foundation lessons. No account token is required to clone the public course.
+Expected: tests end with OK. Windows may use `py`; macOS/Linux may use `python3`. Bash commands need Linux, macOS, Git Bash or WSL. Run commands from the repository root and use only your own local learning systems.
 
-## 2. Complete your first lesson
+## Open the classroom offline
+
+Double-click `academy/index.html`, or serve the classroom locally:
+
+```bash
+python -m http.server 8080 --bind 127.0.0.1 --directory academy
+```
+
+Open http://localhost:8080. This is the course viewer, separate from `python app.py`, the sample HTTP service. All classroom assets are local; no package installation is needed. Browser file-mode storage behavior varies, so use the local server for consistent saved progress.
+
+## Prefer a terminal?
 
 ```bash
 python learn.py lesson 01
-python -m unittest discover -s tests -v
 python learn.py quiz 01
-```
-
-Expected: tests end in OK. Read a failed assertion before changing anything. The quiz is in English and explains its answer. Tamil concept version: `python learn.py --lang ta lesson 01`.
-
-## 3. Record evidence, then continue
-
-Write down the command, result and why it matters. Only after completing the practical work:
-
-```bash
 python learn.py complete 01
 python learn.py next
 ```
 
-Progress is stored in `.learning-progress.json`, ignored by Git. To move computers, copy that file yourself. To reset, back it up then remove only that file. Invalid JSON produces an error rather than silently losing progress.
+The CLI uses `.day-progress.json`; the browser uses its own local storage. They do not synchronize. The older module progress file is retained but is not reused because days have different meanings.
 
-## If you get stuck
+## If you are stuck
 
-- `python` missing: try `py` on Windows or `python3` on macOS/Linux.
-- Import error: run from the cloned repository root.
-- Port busy: stop the earlier local app using Ctrl+C; do not kill unknown processes.
-- Docker unavailable: continue modules 1–5 first.
-- Need help: include OS, module, command and sanitized error in a learning-help issue.
-
-You are ready when you can explain what a test checked. Speed is not the goal. Continue with [module 02](docs/en/02.md).
+Read the exact error and expected evidence. Missing optional tools do not block early days. A busy port means another listener may exist: stop only the process you started. Include your OS, day, command and sanitized error in a learning-help issue. Never post credentials or private logs.

@@ -31,13 +31,13 @@ class LearningTests(unittest.TestCase):
     def test_default_is_english_and_does_not_write(self):
         code, output = self.run_cli([])
         self.assertEqual(code, 0)
-        self.assertIn('DevOps mindset', output)
+        self.assertIn('The journey from code', output)
         self.assertFalse(self.path.exists())
 
-    def test_tamil_concept(self):
-        code, output = self.run_cli(['--lang', 'ta', 'lesson', '01'])
+    def test_english_day_lesson(self):
+        code, output = self.run_cli(['lesson', '01'])
         self.assertEqual(code, 0)
-        self.assertIn('மனப்பாங்கு', output)
+        self.assertIn('Day 1', output)
 
     def test_quiz_rejects_wrong_and_accepts_right(self):
         self.assertEqual(self.run_cli(['quiz', '01', '--answer', '1'])[0], 1)
