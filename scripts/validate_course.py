@@ -19,7 +19,9 @@ def validate(root=ROOT):
         assert len(lesson['quiz']['options']) == 3
         assert 0 <= lesson['quiz']['answer'] < 3
         assert lesson['commands'].strip()
+        assert lesson['goal'] and lesson['prerequisite'] and lesson['tools']
         assert len(lesson['steps']) == 4
+        assert all(s['word'] and s['meaning'] and s['example'] for s in lesson['steps'])
         assert len(lesson['visual']) == 4
         assert len(lesson['concept']['en']) > 180
         assert all(len(s['text']) > 30 for s in lesson['steps'])

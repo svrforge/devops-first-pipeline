@@ -31,7 +31,7 @@ class LearningTests(unittest.TestCase):
     def test_default_is_english_and_does_not_write(self):
         code, output = self.run_cli([])
         self.assertEqual(code, 0)
-        self.assertIn('The journey from code', output)
+        self.assertIn('What is DevOps?', output)
         self.assertFalse(self.path.exists())
 
     def test_english_day_lesson(self):

@@ -1,47 +1,29 @@
-# Start here — your Day 1 setup
+# Start at the beginning
 
-[Open the animated classroom](https://svrforge.github.io/devops-first-pipeline/) · [All 30 text lessons](docs/en/README.md)
+**[Open Day 1: What is DevOps?](https://svrforge.github.io/devops-first-pipeline/#day=1)**
 
-## Learn in your browser
+Nothing to install on Day 1. No coding, terminal or tool names to memorize.
 
-Open the classroom and choose Day 1. Click **Play walkthrough**, or use the four step buttons at your own pace. Read the explanation and familiar example. The animation illustrates a concept; it does not execute shell commands.
+1. Read the first short part.
+2. Read the new word and its simple meaning.
+3. Try the pretend food-order button.
+4. Click **Next** to see the next part of the story.
+5. Try the small activity and one question when ready.
 
-Move to **Try it yourself** for the real commands, success evidence and recovery drill. Use **Checkpoint** to test understanding. Confirm practical evidence and pass the checkpoint before recording completion. Progress and notes are saved in this browser; Export progress downloads a backup, not an account sync. There is no import feature in this edition.
+The example uses a ₹100 lunch and a ₹10 discount. It does not place a real order or take a payment. It helps explain who changes an app, who keeps it available, and why they work together.
 
-## Prepare for hands-on work
+Day 2 introduces files, folders and the terminal. Day 3 introduces Python with one tiny instruction. Day 4 introduces a running app. Git and other tools come later, when their purpose has been explained. Each day tells you what you need first.
 
-Install [Git](https://git-scm.com/downloads/) and [Python 3.11+](https://www.python.org/downloads/). Start with only these tools. Docker, Jenkins, kind and Terraform come later.
+English-only. Browser notes and progress stay on this device. Use Export progress to download a backup; there is no account sync or import feature.
 
-```bash
-git clone https://github.com/svrforge/devops-first-pipeline.git
-cd devops-first-pipeline
-python learn.py doctor
-python -m unittest discover -s tests -v
-```
+## Optional: use a downloaded copy
 
-Expected: tests end with OK. Windows may use `py`; macOS/Linux may use `python3`. Bash commands need Linux, macOS, Git Bash or WSL. Run commands from the repository root and use only your own local learning systems.
-
-## Open the classroom offline
-
-Double-click `academy/index.html`, or serve the classroom locally:
+If you already have this repository, open academy/index.html. For more consistent browser storage, serve it from the repository root:
 
 ```bash
 python -m http.server 8080 --bind 127.0.0.1 --directory academy
 ```
 
-Open http://localhost:8080. This is the course viewer, separate from `python app.py`, the sample HTTP service. All classroom assets are local; no package installation is needed. Browser file-mode storage behavior varies, so use the local server for consistent saved progress.
+Open http://localhost:8080. This optional command is not a Day 1 prerequisite.
 
-## Prefer a terminal?
-
-```bash
-python learn.py lesson 01
-python learn.py quiz 01
-python learn.py complete 01
-python learn.py next
-```
-
-The CLI uses `.day-progress.json`; the browser uses its own local storage. They do not synchronize. The older module progress file is retained but is not reused because days have different meanings.
-
-## If you are stuck
-
-Read the exact error and expected evidence. Missing optional tools do not block early days. A busy port means another listener may exist: stop only the process you started. Include your OS, day, command and sanitized error in a learning-help issue. Never post credentials or private logs.
+[All text lessons](docs/en/README.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
