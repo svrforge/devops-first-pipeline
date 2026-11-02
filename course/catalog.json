@@ -1,0 +1,369 @@
+{
+  "default_language": "en",
+  "languages": {
+    "en": "English",
+    "ta": "தமிழ்"
+  },
+  "lessons": [
+    {
+      "id": "01",
+      "title": {
+        "en": "DevOps mindset",
+        "ta": "DevOps மனப்பாங்கு"
+      },
+      "concept": {
+        "en": "DevOps connects development and operations through shared ownership, small changes and feedback. A pipeline is useful only when its checks represent behavior users need. In this course you own one service from source to recovery. Shipping safely matters more than collecting tool names.",
+        "ta": "DevOps என்பது development மற்றும் operations இணைந்து பொறுப்பேற்பது. சிறிய மாற்றம், உடனடி feedback, சோதனை, recovery முக்கியம். Tool பெயர்களை மனப்பாடம் செய்வதைவிட ஒரு service-ஐ பாதுகாப்பாக நடத்த கற்றுக்கொள்வோம்."
+      },
+      "commands": "python -m unittest discover -s tests -v",
+      "expected": {
+        "en": "All tests finish with OK. Identify which test proves that unknown routes return 404.",
+        "ta": "சரிபார்ப்பு: All tests finish with OK. Identify which test proves that unknown routes return 404."
+      },
+      "challenge": {
+        "en": "Change the greeting in app.py only. Observe a failing assertion. Restore the greeting before continuing.",
+        "ta": "பயிற்சி மற்றும் recovery: Change the greeting in app.py only. Observe a failing assertion. Restore the greeting before continuing."
+      },
+      "quiz": {
+        "question": "Which is the strongest evidence that a change is safe?",
+        "options": [
+          "A green badge with no tests",
+          "Checks of expected service behavior",
+          "A larger YAML file"
+        ],
+        "answer": 1,
+        "explanation": "Checks must represent behavior, not appearances."
+      }
+    },
+    {
+      "id": "02",
+      "title": {
+        "en": "Linux and processes",
+        "ta": "Linux மற்றும் process"
+      },
+      "concept": {
+        "en": "A shell runs commands; a process is a running program. Paths identify files, environment variables configure processes, stdout and stderr carry logs. Exit code 0 indicates success by convention. Work inside this disposable repository and inspect before changing files. Linux lab commands work in Bash on Linux, macOS or WSL.",
+        "ta": "Shell command-ஐ இயக்கும்; process என்பது இயங்கும் நிரல். Path கோப்பை குறிக்கும். Environment variable மூலம் config கொடுக்கலாம். stdout/stderr logs-க்கு பயன்படும். இந்த repository உள்ளே மட்டும் practice செய்யவும்."
+      },
+      "commands": "pwd\nls\npython --version\npython app.py",
+      "expected": {
+        "en": "The app prints Listening on 0.0.0.0:8000. In another terminal call /health. Ctrl+C stops the foreground process.",
+        "ta": "சரிபார்ப்பு: The app prints Listening on 0.0.0.0:8000. In another terminal call /health. Ctrl+C stops the foreground process."
+      },
+      "challenge": {
+        "en": "Start a second copy on the same port. Read Address already in use; stop the second copy and keep only your intended process.",
+        "ta": "பயிற்சி மற்றும் recovery: Start a second copy on the same port. Read Address already in use; stop the second copy and keep only your intended process."
+      },
+      "quiz": {
+        "question": "What does Ctrl+C usually send to a foreground program?",
+        "options": [
+          "An interrupt",
+          "A Git commit",
+          "A container build"
+        ],
+        "answer": 0,
+        "explanation": "An interrupt asks the foreground process to stop."
+      }
+    },
+    {
+      "id": "03",
+      "title": {
+        "en": "Git and collaboration",
+        "ta": "Git மற்றும் இணைந்து வேலை"
+      },
+      "concept": {
+        "en": "Git stores snapshots as commits. A branch lets you prepare a change without moving main. A pull request makes that change reviewable. Inspect diff before staging, and stage specific files so unrelated local content is not included. Forks let visitors contribute without write access to this account.",
+        "ta": "Git மாற்றங்களை commit ஆக சேமிக்கிறது. Branch மூலம் main-ஐ பாதிக்காமல் வேலை செய்யலாம். PR review செய்ய உதவும். Commit முன்னால் diff பார்க்கவும்; தேவையான files மட்டும் stage செய்யவும்."
+      },
+      "commands": "git status\ngit switch -c learning/first-change\ngit diff",
+      "expected": {
+        "en": "You are on learning/first-change; main has not moved. Make a documentation edit, inspect diff, then commit it.",
+        "ta": "சரிபார்ப்பு: You are on learning/first-change; main has not moved. Make a documentation edit, inspect diff, then commit it."
+      },
+      "challenge": {
+        "en": "If you edited the wrong file, inspect git diff first. Copy wanted work to a safe place before using any restore command.",
+        "ta": "பயிற்சி மற்றும் recovery: If you edited the wrong file, inspect git diff first. Copy wanted work to a safe place before using any restore command."
+      },
+      "quiz": {
+        "question": "Where should a new learning change start?",
+        "options": [
+          "Directly on protected main",
+          "On a feature branch",
+          "In the production database"
+        ],
+        "answer": 1,
+        "explanation": "A feature branch isolates the work until checks and review are complete."
+      }
+    },
+    {
+      "id": "04",
+      "title": {
+        "en": "Networking and HTTP",
+        "ta": "Network மற்றும் HTTP"
+      },
+      "concept": {
+        "en": "A request follows a chain: name resolution, connection to a port, HTTP request and response. localhost refers to your own machine. A successful TCP connection does not prove correct application behavior. HTTP 200 means a successful request here; 404 means an unknown route. TLS encrypts transport; this local lab intentionally uses HTTP only.",
+        "ta": "Request வரும்போது name resolution, port connection, HTTP response என படிகள் உள்ளன. localhost உங்கள் கணினி. Connection வந்தாலே app சரியாக வேலை செய்கிறது என்று அர்த்தமில்லை. 200 success; 404 route இல்லை. இந்த local lab-ல் HTTP மட்டும்."
+      },
+      "commands": "python app.py",
+      "expected": {
+        "en": "Open http://localhost:8000/health and then /missing. Compare 200 vs 404 using browser developer tools or curl -i.",
+        "ta": "சரிபார்ப்பு: Open http://localhost:8000/health and then /missing. Compare 200 vs 404 using browser developer tools or curl -i."
+      },
+      "challenge": {
+        "en": "Request http://localhost:8001/health while the service uses 8000. Explain connection refused versus an HTTP 404.",
+        "ta": "பயிற்சி மற்றும் recovery: Request http://localhost:8001/health while the service uses 8000. Explain connection refused versus an HTTP 404."
+      },
+      "quiz": {
+        "question": "What does localhost refer to?",
+        "options": [
+          "The public cloud",
+          "The current machine",
+          "Any Kubernetes service"
+        ],
+        "answer": 1,
+        "explanation": "Loopback points back to the machine making the request."
+      }
+    },
+    {
+      "id": "05",
+      "title": {
+        "en": "Python and test automation",
+        "ta": "Python மற்றும் தானியங்கி சோதனை"
+      },
+      "concept": {
+        "en": "Tests are executable examples of the contract. These tests start a real HTTP server on a free local port and call it over HTTP. That catches routing, response serialization and status-code mistakes without needing external services. Keep tests deterministic: no public APIs, no hardcoded occupied ports and no dependence on execution order.",
+        "ta": "Tests என்பது app என்ன செய்யவேண்டும் என்பதற்கான இயங்கும் உதாரணங்கள். Free local port-ல் real HTTP server தொடங்கி response பார்க்கிறோம். Public API அல்லது test order மீது dependency இல்லாமல் வைத்தால் test நம்பகமாக இருக்கும்."
+      },
+      "commands": "python -m unittest discover -s tests -v",
+      "expected": {
+        "en": "Five HTTP tests and the course tests pass. Explain why an ephemeral port reduces collisions.",
+        "ta": "சரிபார்ப்பு: Five HTTP tests and the course tests pass. Explain why an ephemeral port reduces collisions."
+      },
+      "challenge": {
+        "en": "Change the unknown-route response from 404 to 200 in a temporary branch. The existing unknown-route test must fail. Restore it.",
+        "ta": "பயிற்சி மற்றும் recovery: Change the unknown-route response from 404 to 200 in a temporary branch. The existing unknown-route test must fail. Restore it."
+      },
+      "quiz": {
+        "question": "Why use a free local port in tests?",
+        "options": [
+          "To avoid port collisions",
+          "To skip networking",
+          "To expose tests publicly"
+        ],
+        "answer": 0,
+        "explanation": "Port 0 asks the operating system to allocate an available port."
+      }
+    },
+    {
+      "id": "06",
+      "title": {
+        "en": "Docker images and containers",
+        "ta": "Docker image மற்றும் container"
+      },
+      "concept": {
+        "en": "An image packages files and runtime; a container is an instance of that image. Build time and runtime are different. EXPOSE documents a port but does not publish it. A health check evaluates service behavior, while running only says the process has not exited. Non-root UID, dropped capabilities and a read-only filesystem reduce unnecessary privileges.",
+        "ta": "Image என்பது runtime உடன் app package. Container அதன் running instance. EXPOSE host port திறக்காது; port mapping தேவை. Running status-ஐவிட health check service behavior பார்க்கும். குறைந்த privileges பயன்படுத்துவது நல்ல நடைமுறை."
+      },
+      "commands": "docker build -t devops-first-pipeline:local .\nbash scripts/container-check.sh devops-first-pipeline:local\ndocker compose up -d",
+      "expected": {
+        "en": "Container health, response and non-root checks pass. Open localhost:8000, then docker compose down after the lab.",
+        "ta": "சரிபார்ப்பு: Container health, response and non-root checks pass. Open localhost:8000, then docker compose down after the lab."
+      },
+      "challenge": {
+        "en": "Temporarily map host 8001 to container 8000. The internal health check should still pass; your browser must use host 8001.",
+        "ta": "பயிற்சி மற்றும் recovery: Temporarily map host 8001 to container 8000. The internal health check should still pass; your browser must use host 8001."
+      },
+      "quiz": {
+        "question": "Does EXPOSE publish a host port?",
+        "options": [
+          "Always",
+          "No, a runtime mapping is needed",
+          "Only with Python"
+        ],
+        "answer": 1,
+        "explanation": "EXPOSE is image metadata; publishing is a runtime choice."
+      }
+    },
+    {
+      "id": "07",
+      "title": {
+        "en": "CI and protected changes",
+        "ta": "CI மற்றும் பாதுகாக்கப்பட்ட மாற்றங்கள்"
+      },
+      "concept": {
+        "en": "Continuous integration checks each proposed change. This workflow checks Python versions, course content and a real Docker container. Required checks stop known failures from merging into main. A passing pipeline proves only the configured checks; it is not a security certificate or a production deployment. Never hide errors with continue-on-error to keep a badge green.",
+        "ta": "CI ஒவ்வொரு change-ஐ சோதிக்கும். Required checks fail ஆனால் main merge தடுக்கப்படும். Green pipeline எல்லா பாதுகாப்பும் சரி என்று சொல்லாது; configure செய்த checks மட்டும் pass. Error மறைத்து green காட்டக்கூடாது."
+      },
+      "commands": "python -m unittest discover -s tests -v\npython scripts/validate_course.py",
+      "expected": {
+        "en": "Open Actions and identify the commit SHA tested. Match the four CI job names to their checks.",
+        "ta": "சரிபார்ப்பு: Open Actions and identify the commit SHA tested. Match the four CI job names to their checks."
+      },
+      "challenge": {
+        "en": "Push a failing test on your learning branch. Confirm the PR check fails, then fix it and confirm the newer commit is green.",
+        "ta": "பயிற்சி மற்றும் recovery: Push a failing test on your learning branch. Confirm the PR check fails, then fix it and confirm the newer commit is green."
+      },
+      "quiz": {
+        "question": "Should a failing test be ignored to keep CI green?",
+        "options": [
+          "Yes",
+          "No, fix the cause",
+          "Only on Fridays"
+        ],
+        "answer": 1,
+        "explanation": "CI must report real failures so maintainers can fix them."
+      }
+    },
+    {
+      "id": "08",
+      "title": {
+        "en": "Jenkins pipelines",
+        "ta": "Jenkins pipeline"
+      },
+      "concept": {
+        "en": "Jenkins executes stages on an agent. The controller coordinates work; the agent needs the tools used by the pipeline. A Jenkins container does not automatically contain Docker or Python. Docker daemon access is powerful, so use a dedicated lab agent. This repo reuses the same test and container verification commands instead of inventing a second definition of success.",
+        "ta": "Jenkins controller வேலை ஒருங்கிணைக்கும்; agent stages இயக்கும். Agent-ல் தேவையான Python/Docker இருக்கவேண்டும். Docker access அதிக அதிகாரம் தருவதால் dedicated lab agent பயன்படுத்தவும். GitHub CI மற்றும் Jenkins ஒரே checks பயன்படுத்துகின்றன."
+      },
+      "commands": "python -m unittest discover -s tests -v\nbash scripts/container-check.sh devops-first-pipeline:local",
+      "expected": {
+        "en": "Follow docs/JENKINS.md. All stages are green on your dedicated Linux agent.",
+        "ta": "சரிபார்ப்பு: Follow docs/JENKINS.md. All stages are green on your dedicated Linux agent."
+      },
+      "challenge": {
+        "en": "Use an agent without Docker and inspect the command-not-found failure. Fix the agent, not the verification stage.",
+        "ta": "பயிற்சி மற்றும் recovery: Use an agent without Docker and inspect the command-not-found failure. Fix the agent, not the verification stage."
+      },
+      "quiz": {
+        "question": "Where must pipeline command dependencies exist?",
+        "options": [
+          "On the build agent",
+          "Only in a README",
+          "Only on GitHub"
+        ],
+        "answer": 0,
+        "explanation": "The agent executes commands and needs their runtime dependencies."
+      }
+    },
+    {
+      "id": "09",
+      "title": {
+        "en": "Kubernetes fundamentals",
+        "ta": "Kubernetes அடிப்படை"
+      },
+      "concept": {
+        "en": "A Deployment declares desired pods; a Service provides a stable route to selected pods. Readiness determines traffic eligibility; liveness can trigger restarts. Start with a local kind cluster to avoid cloud cost. Always specify context when changing cluster resources. This lab loads a local image and deliberately never pulls it from a registry.",
+        "ta": "Deployment தேவையான pods எண்ணிக்கையை அறிவிக்கும். Service pods-க்கு நிலையான access தரும். Readiness traffic பெற தயாரா; liveness restart தேவையா பார்க்கும். Local kind lab பயன்படுத்தவும்; context சரிபார்த்து வேலை செய்யவும்."
+      },
+      "commands": "kubectl config current-context\n# Follow docs/KUBERNETES.md for named-context commands.",
+      "expected": {
+        "en": "Two pods are Ready in kind-devops-learning and /health works through port-forward.",
+        "ta": "சரிபார்ப்பு: Two pods are Ready in kind-devops-learning and /health works through port-forward."
+      },
+      "challenge": {
+        "en": "Skip image loading on a fresh lab cluster. Diagnose ErrImageNeverPull, load the image and verify rollout.",
+        "ta": "பயிற்சி மற்றும் recovery: Skip image loading on a fresh lab cluster. Diagnose ErrImageNeverPull, load the image and verify rollout."
+      },
+      "quiz": {
+        "question": "Which probe decides whether a pod receives service traffic?",
+        "options": [
+          "Readiness",
+          "Liveness alone",
+          "Git status"
+        ],
+        "answer": 0,
+        "explanation": "Readiness controls whether a pod is ready to receive traffic."
+      }
+    },
+    {
+      "id": "10",
+      "title": {
+        "en": "Terraform and desired state",
+        "ta": "Terraform மற்றும் desired state"
+      },
+      "concept": {
+        "en": "Infrastructure as code describes desired resources and records their relationship in state. Plan previews changes; apply executes them. Our terraform_data lab uses the built-in provider and creates no cloud resources. State still deserves care: never commit it, because real infrastructure state may contain sensitive values. A plan is a proposal, not permission to apply in production.",
+        "ta": "IaC தேவையான infrastructure நிலையை code-ல் சொல்கிறது. Plan மாற்றங்களை முன்காட்டும்; apply செயல்படுத்தும். இந்த terraform_data lab cloud resource உருவாக்காது. State-ஐ commit செய்யவேண்டாம்; real state sensitive values கொண்டிருக்கலாம்."
+      },
+      "commands": "terraform -chdir=labs/terraform init\nterraform -chdir=labs/terraform plan\nterraform -chdir=labs/terraform apply",
+      "expected": {
+        "en": "Review the plan interactively. Output shows the service name and replicas. A second plan says no changes.",
+        "ta": "சரிபார்ப்பு: Review the plan interactively. Output shows the service name and replicas. A second plan says no changes."
+      },
+      "challenge": {
+        "en": "Change replicas from 2 to 3 via -var=\"replicas=3\" in plan; explain the proposed input update before applying.",
+        "ta": "பயிற்சி மற்றும் recovery: Change replicas from 2 to 3 via -var=\"replicas=3\" in plan; explain the proposed input update before applying."
+      },
+      "quiz": {
+        "question": "What does terraform plan do?",
+        "options": [
+          "Previews proposed changes",
+          "Always deploys to OCI",
+          "Deletes state"
+        ],
+        "answer": 0,
+        "explanation": "Plan calculates the proposed change without applying it."
+      }
+    },
+    {
+      "id": "11",
+      "title": {
+        "en": "Observability and incident response",
+        "ta": "Observability மற்றும் incident response"
+      },
+      "concept": {
+        "en": "Logs describe events, metrics summarize measurements and traces connect work across services. Availability should be measured from the user perspective. During an incident: observe symptoms, establish scope, inspect recent changes, mitigate safely, verify recovery and record a timeline. Do not restart everything before collecting enough evidence to understand the failure.",
+        "ta": "Logs நிகழ்வுகளை சொல்கின்றன; metrics அளவுகளை சொல்கின்றன; traces request பயணத்தை இணைக்கும். Incident-ல் symptom, scope, recent change, mitigation, recovery verification, timeline ஆகியவற்றை பதிவு செய்யவும். Evidence இல்லாமல் அனைத்தையும் restart செய்யாதீர்கள்."
+      },
+      "commands": "docker compose logs --tail=30 app\npython labs/observability/probe.py http://127.0.0.1:8000/health",
+      "expected": {
+        "en": "The probe reports HTTP status and elapsed time. Use labs/incident/POSTMORTEM.md to record your experiment.",
+        "ta": "சரிபார்ப்பு: The probe reports HTTP status and elapsed time. Use labs/incident/POSTMORTEM.md to record your experiment."
+      },
+      "challenge": {
+        "en": "Stop only your Compose app. Observe probe failure, start it again, verify recovery and capture the two timestamps.",
+        "ta": "பயிற்சி மற்றும் recovery: Stop only your Compose app. Observe probe failure, start it again, verify recovery and capture the two timestamps."
+      },
+      "quiz": {
+        "question": "What is the best first incident step?",
+        "options": [
+          "Restart every system",
+          "Observe symptom and scope",
+          "Delete logs"
+        ],
+        "answer": 1,
+        "explanation": "Observation defines the problem and preserves evidence."
+      }
+    },
+    {
+      "id": "12",
+      "title": {
+        "en": "Security, cloud and capstone",
+        "ta": "Security cloud மற்றும் capstone"
+      },
+      "concept": {
+        "en": "Least privilege means granting only the access needed for a task. Keep secrets outside source control, review changes and limit public exposure. Cloud adds networking, IAM, cost and shared responsibility. Our OCI guide is a planning exercise, not an automatic cloud deployment. Complete the capstone by showing tested behavior, container evidence, a PR, an incident timeline and a recovery explanation.",
+        "ta": "Least privilege என்பது தேவையான access மட்டும் வழங்குவது. Secrets code-ல் வேண்டாம். Cloud-ல் network, IAM, cost, shared responsibility முக்கியம். OCI guide planning exercise மட்டும். Capstone-ல் tests, container, PR, incident timeline, recovery evidence காட்டவும்."
+      },
+      "commands": "python learn.py status\npython -m unittest discover -s tests -v\npython scripts/validate_course.py",
+      "expected": {
+        "en": "Complete capstones/README.md and provide evidence for each acceptance criterion. Explain what remains manual.",
+        "ta": "சரிபார்ப்பு: Complete capstones/README.md and provide evidence for each acceptance criterion. Explain what remains manual."
+      },
+      "challenge": {
+        "en": "Find a pretend secret in a local untracked note. Explain why removing a committed secret does not revoke it; rotation would still be required.",
+        "ta": "பயிற்சி மற்றும் recovery: Find a pretend secret in a local untracked note. Explain why removing a committed secret does not revoke it; rotation would still be required."
+      },
+      "quiz": {
+        "question": "If a real credential is committed, what matters first?",
+        "options": [
+          "Only delete the line",
+          "Revoke or rotate the exposed credential",
+          "Make the badge green"
+        ],
+        "answer": 1,
+        "explanation": "Removing a file does not invalidate the leaked credential."
+      }
+    }
+  ]
+}
