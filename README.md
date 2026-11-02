@@ -6,7 +6,7 @@
 
 # DevOps, one day at a time.
 
-**Start with Day 1. Understand the idea. Watch it move. Try it yourself. Prove it worked.**
+**Day 1 starts with a food-order app. No coding, installation or tool names to memorize.**
 
 A free, English-only learning experience from **SVR Forge · Vignesh Raja Sundararajan**. Learn by taking one small HTTP service from your laptop through Git, tests, containers, CI, local Kubernetes, infrastructure state and incident recovery.
 
@@ -39,7 +39,11 @@ The classroom works on mobile and desktop, supports keyboard navigation and redu
 | [25–28](docs/en/25.md) | Observability, incidents, secrets, cloud design | Gather evidence and plan safe operations |
 | [29–30](docs/en/29.md) | Capstone and system explanation | Demonstrate what you can build and recover |
 
-## Start with only Git and Python
+## Begin in your browser — no setup on Day 1
+
+**[Open Day 1](https://svrforge.github.io/devops-first-pipeline/#day=1)**. Read one short part, learn the new word, and click Next. The sample order button shows what a customer sees before and after a discount becomes available.
+
+The commands below are optional for people who already want a downloaded copy. They are not required for the first lesson.
 
 ```bash
 git clone https://github.com/svrforge/devops-first-pipeline.git
