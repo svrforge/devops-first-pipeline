@@ -27,7 +27,7 @@ jobs:
           docker compose config -q
           docker build -t devops-first-pipeline:pages .
           bash scripts/container-check.sh devops-first-pipeline:pages
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v3
         with:
           path: academy
