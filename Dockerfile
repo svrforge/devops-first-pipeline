@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.15-slim
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 PORT=8000
 WORKDIR /app
 RUN groupadd --gid 10001 learner && useradd --uid 10001 --gid learner --no-create-home learner
